@@ -1,3 +1,5 @@
+venv/
+.venv/
 backend-ml/venv/
 __pycache__/
 *.pyc
