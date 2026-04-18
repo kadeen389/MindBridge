@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MindBridge Chat</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="chat-page">
+
+  <!-- CONSENT MODAL -->
+  <div id="consentModal" class="consent-modal">
+    <div class="consent-box">
+      <h2>Before you start</h2>
+      <p>
+        MindBridge is a support tool, not a medical or therapy service.
+        It does not provide diagnosis or emergency help.
+      </p>
+
+      <ul>
+        <li>You understand this is not professional therapy</li>
+        <li>You will seek real help if in crisis</li>
+        <li>You are comfortable continuing</li>
+      </ul>
+
+      <button id="agreeBtn">I understand and want to continue</button>
+    </div>
+  </div>
+
+  <div class="chat-layout">
+    <aside class="sidebar card">
+      <a href="index.html" class="back-link">← Back to home</a>
+      <div class="sidebar-block">
+        <p class="section-label">About this chat</p>
+        <h1>MindBridge Support Chat</h1>
+        <p>
+          A youth-focused AI support experience for early mental health conversations.
+          It listens, responds supportively, and recommends trusted services where needed.
+        </p>
+      </div>
+
+      <div class="sidebar-block notice-block">
+        <h3>Safety notice</h3>
+        <ul class="clean-list">
+          <li>This chat does not diagnose mental illness.</li>
+          <li>This is not a replacement for therapy or crisis services.</li>
+          <li>If you are in immediate danger, call emergency services.</li>
+        </ul>
+      </div>
+
+      <div class="sidebar-block">
+        <h3>Quick prompts</h3>
+        <div class="prompt-list">
+          <button class="prompt-chip" data-prompt="I have been feeling stressed with university recently.">Feeling stressed</button>
+          <button class="prompt-chip" data-prompt="I have felt low and unmotivated for a while.">Feeling low</button>
+          <button class="prompt-chip" data-prompt="I feel anxious and I don't know what to do.">Feeling anxious</button>
+          <button class="prompt-chip" data-prompt="I need help finding real support services.">Need support options</button>
+        </div>
+      </div>
+
+      <div class="sidebar-block resources-block">
+        <h3>Trusted support</h3>
+        <div class="resource-item">
+          <strong>Samaritans</strong>
+          <span>116 123</span>
+        </div>
+        <div class="resource-item">
+          <strong>NHS 111</strong>
+          <span>Urgent support</span>
+        </div>
+        <div class="resource-item">
+          <strong>YoungMinds</strong>
+          <span>Text YM to 85258</span>
+        </div>
+      </div>
+    </aside>
+
+    <main class="chat-main card">
+      <header class="chat-main-header">
+        <div>
+          <p class="eyebrow">Anonymous session</p>
+          <h2>Talk when you are ready</h2>
+        </div>
+        <div class="status-pill" id="statusPill">Ready</div>
+      </header>
+
+      <section class="chat-box" id="chatBox" aria-live="polite">
+        <div class="message bot">
+          <div class="message-meta">MindBridge</div>
+          <p>Hi, I’m here to listen. You can tell me how you’ve been feeling, what has been difficult lately, or whether you want help finding support.</p>
+        </div>
+      </section>
+
+      <section class="chat-tools" id="supportPanel"></section>
+
+      <form class="chat-input-area" id="chatForm">
+        <label class="sr-only" for="userInput">Type your message</label>
+        <input type="text" id="userInput" maxlength="600" placeholder="Type your message here..." autocomplete="off">
+        <button type="submit" id="sendBtn">Send</button>
+      </form>
+    </main>
+  </div>
+
+  <script src="js/chat.js"></script>
+</body>
+</html>
