@@ -41,7 +41,7 @@ MindBridge/
 │   └── evaluate_hybrid_model.py
 │
 └── README.md
-
+```
 ## Requirements
 Before running the project, make sure you have the following installed:
 
