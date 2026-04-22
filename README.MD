@@ -1,44 +1,144 @@
 # MindBridge - Mental Health Early Detection Web App
 
-A final-year project web application for early mental health support in young people.
+MindBridge is a web-based mental health support chatbot designed to provide early-stage support for young users. The system analyses user text, classifies emotional risk levels, and responds with supportive guidance and relevant signposting to trusted services such as NHS, Samaritans, and YoungMinds.
+
+The final system uses a hybrid classification approach, combining:
+
+a rule-based baseline classifier
+an AI-based NLP classifier using the OpenAI API
+a FastAPI backend
+a frontend built with HTML, CSS, and JavaScript
 
 ## Features
-- Responsive landing page and full chat interface
-- FastAPI backend with risk-aware routing
-- Optional OpenAI integration for stronger conversational quality
-- Fallback local response system when no API key is configured
-- Trusted support resources surfaced in the UI
+- Web-based chatbot interface
+- Anonymous session-based interaction
+- Consent modal and ethical notice
+- Hybrid risk classification (low / medium / high)
+- Crisis escalation behaviour for high-risk inputs
+- Dynamic support resources panel
+- Evaluation scripts for classifier testing
+
+## Project Structure:
+MindBridge/
+│
+├── backend-ml/
+│   ├── server.py
+│   ├── model.py
+│   ├── .env
+│
+├── frontend/
+│   ├── index.html
+│   ├── chat.html
+│   ├── css/
+│   │   └── style.css
+│   └── js/
+│       └── chat.js
+│
+├── mindbridge-evaluation/
+│   ├── evaluate_rule_model.py
+│   └── evaluate_hybrid_model.py
+│
+└── README.md
+
+## Requirements
+Before running the project, make sure you have the following installed:
+
+- Python 3.10+
+- pip
+- A modern web browser
+
+
+Optional but useful:
+
+- VS Code
+- Live Server extension (for serving - frontend files)
+- virtualenv or venv
 
 ## Run locally
 
-### 1) Backend
+### 1) Backend Setup Windows
+```bash
+cd backend-ml
+python -m venv venv
+venv\Scripts\activate
+pip install -r ../requirements.txt
+pip install scikit-learn matplotlib
+python -m uvicorn server:app --reload --port 8000
+```
+### 1) Backend Setup Mac/Linux
 ```bash
 cd backend-ml
 python -m venv venv
 source venv/bin/activate
 pip install -r ../requirements.txt
-cp ../.env.example ../.env
-# Add your OPENAI_API_KEY to ../.env if you want AI responses
+pip install scikit-learn matplotlib
 python -m uvicorn server:app --reload --port 8000
 ```
 
-### 2) Frontend
-Open `index.html` directly in the browser, or serve the folder with a local server.
+This should start the API locally at:
+http://127.0.0.1:8000
+
+You can test that it is running by visiting:
+http://127.0.0.1:8000/health
+
+If working correctly, the API should return a health/status response.
+
+### 2) Frontend Setup
+You can open index.html in your browser.
+
+However, it is usually better to serve it locally.
+
 For example:
 ```bash
+cd frontend
 python -m http.server 5500
 ```
 Then open `http://127.0.0.1:5500`
 
-## API endpoints
-- `GET /health`
-- `POST /chat`
+## How the System Works
+- The user opens the website and accepts the consent modal.
+- The user enters a message in the chatbot.
+- The frontend sends the message to the FastAPI backend.
 
-### Sample request
-```json
-{
-  "text": "I feel anxious and overwhelmed lately.",
-  "session_id": "demo-session",
-  "history": []
-}
+ The backend:
+- runs the rule-based classifier
+-runs the AI NLP classifier
+combines both using the hybrid risk logic
+
+The backend returns:
+- a chatbot reply
+- next-step guidance
+- support resources if needed
+- The frontend displays the response and support cards.
+
+## Common Issues
+Consent modal does not reappear
+
+The consent state is stored in browser localStorage.
+
+To reset it, open browser console and run:
+``` bash
+localStorage.removeItem("mindbridge_consent")
 ```
+To reset everything:
+```bash
+localStorage.clear()
+sessionStorage.clear()
+```
+
+## Technologies Used
+- Python
+- FastAPI
+- OpenAI API
+- Pydantic
+- python-dotenv
+- HTML
+- CSS
+- JavaScript
+- scikit-learn
+- matplotlib
+
+## Author
+
+Callum Walters
+Final Year Project – University of Westminster
