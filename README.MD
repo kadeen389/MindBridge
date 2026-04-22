@@ -18,7 +18,9 @@ a frontend built with HTML, CSS, and JavaScript
 - Dynamic support resources panel
 - Evaluation scripts for classifier testing
 
-## Project Structure:
+## Project Structure
+
+```text
 MindBridge/
 │
 ├── backend-ml/
@@ -99,6 +101,20 @@ python3 -m http.server 5500
 ```
 
 Then open `http://127.0.0.1:5500`
+
+## Environment Variables
+
+Create a `.env` file in the `backend-ml` folder and add:
+
+```env
+OPENAI_API_KEY=your_openai_api_key_here
+OPENAI_MODEL=gpt-4.1-mini
+
+For security reasons, the OpenAI API key is not included in this repository. 
+To run the system with full functionality, users should generate their own API key 
+via the OpenAI platform and add it to the `.env` file.
+
+A temporary API key can be provided for demonstration purposes upon request.
 
 ## How the System Works
 - The user opens the website and accepts the consent modal.
