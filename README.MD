@@ -68,7 +68,7 @@ python -m uvicorn server:app --reload --port 8000
 ### 1) Backend Setup Mac/Linux
 ```bash
 cd backend-ml
-python -m venv venv
+python3 -m venv venv
 source venv/bin/activate
 pip install -r ../requirements.txt
 pip install scikit-learn matplotlib
