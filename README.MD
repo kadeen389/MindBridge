@@ -89,10 +89,15 @@ You can open index.html in your browser.
 However, it is usually better to serve it locally.
 
 For example:
+Windows 
 ```bash
-cd frontend
-python -m http.server 5500
+python -m http.server 5500 
 ```
+Mac/Linux
+```bash
+python3 -m http.server 5500 
+```
+
 Then open `http://127.0.0.1:5500`
 
 ## How the System Works
