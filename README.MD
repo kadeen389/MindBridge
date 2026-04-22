@@ -109,7 +109,7 @@ Create a `.env` file in the `backend-ml` folder and add:
 ```env
 OPENAI_API_KEY=your_openai_api_key_here
 OPENAI_MODEL=gpt-4.1-mini
-
+```
 For security reasons, the OpenAI API key is not included in this repository. 
 To run the system with full functionality, users should generate their own API key 
 via the OpenAI platform and add it to the `.env` file.
